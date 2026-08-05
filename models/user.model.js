@@ -7,7 +7,6 @@ const userSchema = new Schema({
         minlength: 3,
         maxlength: 100,
         trim: true,
-        default:"" ,
         required: [true, "Name is required"]
     },
     email: {
@@ -15,14 +14,12 @@ const userSchema = new Schema({
         unique: true,
         trim: true,
         lowercase: true,
-        default:"" ,
         required: [true, "Email is required"]
     },
-    password:{
+    password: {
         type: String,
-        trim:true,
-        select:false, // to prevent accidentally selecting password in any function
-        default:"" ,
+        trim: true,
+        select: false, // to prevent accidentally selecting password in any function
         required: [true, "Password is required"]
 
     }

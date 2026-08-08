@@ -35,15 +35,10 @@ const registratonSchema = new Schema({
         min: 10,
         required: [true, "Age is required"]
     }
+},
+{
+    timestamps:true
 });
-
-
-
-
-
-
-
-
 
 
 

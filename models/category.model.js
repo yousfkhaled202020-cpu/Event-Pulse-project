@@ -8,7 +8,6 @@ const categorySchema = new Schema({
         maxlength: 100,
         trim: true,
         unique: true,
-        default:"",
         required: [true, "Name is required"]
     },
     description: {

@@ -6,7 +6,6 @@ const eventSchema = new Schema({
         minlength: 3,
         maxlength: 100,
         trim: true,
-        default: "",
         required: [true, "Name is required"]
     },
     category: {
@@ -21,28 +20,26 @@ const eventSchema = new Schema({
     },
     date: {
         type: Date,
-        defualt: Date.now(),
+        default: Date.now,
         required: [true, "Please specify event date"]
     },
     address: {
         city: {
             type: String,
-            default: "",
-            minlenght: 3,
+            minlength: 3,
             trim: true,
             required: [true, "please specify the city"]
         },
         street: {
             type: String,
-            default: "",
-            minlenght: 3,
+            minlength: 3,
             trim: true,
             required: [true, "please specify the street"]
         },
         details: { //addtional details
             type: String,
-            default: "",
-            minlenght: 3,
+            minlength: 3,
+            maxlength:500,
             trim: true,
         }
     },

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const eventSchema = new Schema({
-    name: {
+    title: {
         type: String,
         minlength: 3,
         maxlength: 100,
@@ -10,17 +10,21 @@ const eventSchema = new Schema({
     },
     category: {
         type: Schema.Types.ObjectId,
-        ref: "Category"
+        ref: "Category",
+        required:true
+    },
+    description:{
+        type: String,
+        required: true,
+        trim: true
     },
     capacity: {
         type: Number,
         min: 1,
-        default: 10,
         required: [true, "Please specify event capacity"]
     },
     date: {
         type: Date,
-        default: Date.now,
         required: [true, "Please specify event date"]
     },
     address: {
@@ -42,6 +46,16 @@ const eventSchema = new Schema({
             maxlength:500,
             trim: true,
         }
+    },
+    venue: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    organizer: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     },
 
 },

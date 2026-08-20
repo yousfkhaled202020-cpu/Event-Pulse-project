@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+    const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const categorySchema = new Schema({
@@ -14,13 +14,6 @@ const categorySchema = new Schema({
         type: String,
         default:"",
     },
-    slug: {
-        type: String,
-        required: [true, "Please Enter the slug of the Category"],
-        unique: true,
-        trim: true,
-        default:"",
-    }
 },
     {
         timestamps: true

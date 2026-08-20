@@ -6,9 +6,9 @@ const messageSchema = new Schema({
         ref: "User",
         required: true
     },
-    receiver: {
+    event: {
         type: Schema.Types.ObjectId,
-        ref: "User",
+        ref: "Event",
         required: true
     },
     content: {
@@ -17,7 +17,6 @@ const messageSchema = new Schema({
         maxlength: 500,
         required: [true, "your message is empty"],
         trim: true,
-        default: "Hi"
     },
     isRead: {
         type: Boolean,

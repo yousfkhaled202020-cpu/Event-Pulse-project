@@ -7,25 +7,28 @@ const userSchema = new Schema({
         minlength: 3,
         maxlength: 100,
         trim: true,
-        required: [true, "Name is required"]
+        required: true,
     },
     email: {
         type: String,
         unique: true,
         trim: true,
         lowercase: true,
-        required: [true, "Email is required"]
+        required: true,
     },
     password: {
         type: String,
         trim: true,
         select: false, // to prevent accidentally selecting password in any function
-        required: [true, "Password is required"]
-
-    }
-},
+        required: true,
+    },
+    role: {
+        type: String,
+        enum: ["attendee", "admin"], default: "attendee" 
+    },
+    },
     {
-        timestamps: true
+        timestamps: true,
     });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model("User", userSchema);

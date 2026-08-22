@@ -29,27 +29,11 @@ const regisAuth = asyncHandler(async (req,res,next) => {
     const secretKey = process.env.JWT_SECRET;
     const tocken = jwt.sign(payload,secretKey,{expiresIn:process.env.JWT_EXPIRES_IN});
 
-res.status(201).json({
-    status: "Success",
-    message: "User created successfully",
-    token: tocken, // 👈 Sending the token as requested
-    data: {        // 👈 Returning the user data alongside it
-        user: {
-            id: savedUser.id,
-            name: savedUser.name,
-            email: savedUser.email,
-            role: savedUser.role || "attendee"
-        }
-    }
-});
-
+    res.status(201).json({
+        status:"Success",
+        message:"user created successfully",
+        data:tocken
+    })
 });
 
 module.exports ={regisAuth}; 
-// Step 1: Extract the fields from req.body.
-// Step 2: Check if any field is empty (your broad validation strategy works perfectly here).
-// Step 3: Query MongoDB to check if a user with that email already exists. If yes, return an error.
-// Step 4: Hash the password using a library like bcrypt.
-// Step 5: Create and save the new user document into your MongoDB collection.
-// Step 6: Use the newly created user's database ID to generate your authentication token.
-// Step 7: Respond to the client with the token and a success status code (201 Created).

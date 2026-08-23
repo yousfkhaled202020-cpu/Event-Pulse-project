@@ -27,12 +27,12 @@ const regisAuth = asyncHandler(async (req,res,next) => {
         role:"attendee"
     }
     const secretKey = process.env.JWT_SECRET;
-    const tocken = jwt.sign(payload,secretKey,{expiresIn:process.env.JWT_EXPIRES_IN});
+    const token = jwt.sign(payload,secretKey,{expiresIn:process.env.JWT_EXPIRES_IN});
 
     res.status(201).json({
         status:"Success",
         message:"user created successfully",
-        data:tocken
+        data:token
     })
 });
 

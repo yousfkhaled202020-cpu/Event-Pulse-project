@@ -1,0 +1,12 @@
+$kind: collection
+name: EventPulse dev  Collection
+variables:
+  - key: supabase_service_role_api_key_1b36
+    secret: true
+    disabled: false
+  - key: json_web_token_1b36
+    secret: true
+    disabled: false
+  - key: json_web_token_0m6y
+    secret: true
+    disabled: false

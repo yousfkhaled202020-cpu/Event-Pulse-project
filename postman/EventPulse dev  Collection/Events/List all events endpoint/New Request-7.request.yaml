@@ -1,0 +1,7 @@
+$kind: http-request
+name: New Request
+url: "{{baseUrl}}/api/events?city=cairo"
+method: GET
+queryParams:
+  city: cairo
+order: 4501386536301411

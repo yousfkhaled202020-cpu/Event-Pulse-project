@@ -1,0 +1,12 @@
+$kind: http-request
+name: New Request
+url: "{{baseUrl}}/api/registrations/6a8b8559e9bc424b88d3d487"
+method: POST
+body:
+  type: json
+  content: '{"age":"45"}'
+auth:
+  type: bearer
+  credentials:
+    token: "{{json_web_token_0m6y}}"
+order: 4098147652741870

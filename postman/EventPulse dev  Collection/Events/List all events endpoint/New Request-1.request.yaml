@@ -1,0 +1,42 @@
+$kind: http-request
+name: New Request
+url: "{{baseUrl}}/api/events"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \ \"title\":\"world cup\",\r
+
+    \ \"category\":\"6a88797bff8c69791c7ba560\",\r
+
+    \ \"description\":\"biggest sports compitition.\",\r
+
+    \ \"capacity\":\"10\",\r
+
+    \ \"date\":\"2026-08-16T18:00:00.000Z\",\r
+
+    \ \"address\":{\r
+
+    \ \"city\":\"cairo\",\r
+
+    \ \"street\":\"90th street\",\r
+
+    \ \"details\":\"hdsbkjvf\"\r
+
+    \ },\r
+
+    \ \"venue\":\"staduim\"\r
+
+    \r
+
+    \r
+
+    \r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: "{{supabase_service_role_api_key_1b36}}"
+order: 1645090570690141

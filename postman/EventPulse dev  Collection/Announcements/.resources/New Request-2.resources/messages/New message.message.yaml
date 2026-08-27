@@ -1,0 +1,7 @@
+$kind: socket.io-message
+eventName: join-event
+acknowledgement: false
+args:
+  - content: 6a8b8559e9bc424b88d3d487
+    contentType: text
+order: 1787756829348

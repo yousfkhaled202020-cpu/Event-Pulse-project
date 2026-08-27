@@ -1,0 +1,14 @@
+$kind: http-request
+name: New Request
+url: "{{baseUrl}}/api/events?startDate=2026-01-01&endDate=2026-6-31"
+method: GET
+queryParams:
+  - key: startDate
+    value: 2026-01-01
+    disabled: false
+    description: ""
+  - key: endDate
+    value: 2026-6-31
+    disabled: false
+    description: ""
+order: 4503007349286172

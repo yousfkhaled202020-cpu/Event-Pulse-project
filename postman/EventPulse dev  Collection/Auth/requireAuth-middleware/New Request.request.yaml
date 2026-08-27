@@ -1,0 +1,9 @@
+$kind: http-request
+name: New Request
+url: "{{baseUrl}}/api/test"
+method: POST
+auth:
+  type: bearer
+  credentials:
+    token: ""
+order: 1787486148378

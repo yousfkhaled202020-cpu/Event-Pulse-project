@@ -1,0 +1,18 @@
+$kind: http-request
+name: New Request
+url: "{{baseUrl}}/api/messages/"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"eventId\":\"6a8b8559e9bc424b88d3d487\",\r
+
+    \    \"content\":\"hey\"\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: "{{json_web_token_1b36}}"
+order: 1787753659386

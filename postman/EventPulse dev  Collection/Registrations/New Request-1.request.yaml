@@ -1,0 +1,5 @@
+$kind: http-request
+name: New Request
+url: "{{baseUrl}}/api/registrations"
+method: GET
+order: 162998955124153

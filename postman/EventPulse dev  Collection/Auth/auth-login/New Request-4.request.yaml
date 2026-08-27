@@ -1,0 +1,14 @@
+$kind: http-request
+name: New Request
+url: "{{baseUrl}}/api/auth/login"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"email\": \"admin_test@example.com\",\r
+
+    \  \"password\": \"securepassword123\"\r
+
+    }"
+order: 4146990017412693

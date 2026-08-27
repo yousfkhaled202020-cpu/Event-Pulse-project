@@ -4,7 +4,7 @@ const controller = require("../controllers/event.controller.js");
 const { requireAuth } = require("../middleware/requireAuth.js");
 const { requireRole } = require("../middleware/requireRole.js");
 const validate = require("../middleware/validation");
-const {createEventRules,updateEventRules} =require("../middleware/validationRules");
+const {createEventRules,updateEventRules} =require("../middleware/validation.Rules.js");
 
 router.get("/" , controller.listAllEvents);
 router.get("/:id" , controller.showEvent);

@@ -17,6 +17,11 @@ const io = new Server(server,{cors:{origin:"*"}});
 const PORT = process.env.PORT || 5000 ;
 const SERVER_START_TIME = Date.now();
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./eventpulse-swagger.json');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 
 setupMiddleware(app);
 app.use((req,res,next) =>{

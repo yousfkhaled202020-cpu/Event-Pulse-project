@@ -17,13 +17,17 @@ const SERVER_START_TIME = Date.now();
 
 setupMiddleware(app);
 
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./eventpulse-swagger.json');
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./eventpulse-swagger.json");
+
+const swaggerOptions = {
+    customCssUrl: "https://unpkg.com/swagger-ui-dist@5/swagger-ui.css"
+};
 
 app.use(
-    '/api-docs',
-    swaggerUi.serveFiles(swaggerDocument),
-    swaggerUi.setup(swaggerDocument)
+    "/api-docs",
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerDocument, swaggerOptions)
 );
 
 app.use((req,res,next) =>{

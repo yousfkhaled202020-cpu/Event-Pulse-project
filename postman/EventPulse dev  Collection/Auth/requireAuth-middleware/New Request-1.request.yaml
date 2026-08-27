@@ -1,0 +1,9 @@
+$kind: http-request
+name: New Request
+url: "{{baseUrl}}/api/test"
+method: POST
+auth:
+  type: bearer
+  credentials:
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic2FyYSIsImlkIjoiNmE4YWUxYzQ4ZDdmMjIxNDMxNmM2MzA5Iiwicm9sZSI6ImF0dGVuZGVlIiwiaWF0IjoxNzg3NDg2NjYwLCJleHAiOjE3ODc5MTg2NjB9.7Ro4BKA9QXm7Jc_WZcDEjNCA
+order: 3613163800040809

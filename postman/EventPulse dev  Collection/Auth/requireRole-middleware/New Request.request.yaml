@@ -1,0 +1,5 @@
+$kind: http-request
+name: New Request
+url: "{{baseUrl}}/api/test-guard"
+method: POST
+order: 1787487251216

@@ -1,0 +1,8 @@
+$kind: http-request
+name: New Request
+url: "{{baseUrl}}/api/messages/6a8b8559e9bc424b88d3d487"
+method: GET
+body:
+  type: json
+  content: ""
+order: 3831701909957240

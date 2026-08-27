@@ -1,0 +1,12 @@
+$kind: http-request
+name: New Request
+url: "{{baseUrl}}/api/events/6a8b786af08e38effc69cb40"
+method: PATCH
+body:
+  type: json
+  content: "{\r\n    \"title\":\"koka\"\r\n}"
+auth:
+  type: bearer
+  credentials:
+    token: "{{json_web_token_1b36}}"
+order: 4308269881761164

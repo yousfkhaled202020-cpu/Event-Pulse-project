@@ -1,0 +1,8 @@
+$kind: socket.io-request
+name: New Request
+description: ""
+url: "{{baseUrl}}"
+events: []
+settings: {}
+messages: .resources/New Request-2.resources/messages
+order: 2835620878138848

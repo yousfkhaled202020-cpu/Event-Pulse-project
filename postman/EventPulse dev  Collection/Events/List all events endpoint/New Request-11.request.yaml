@@ -1,0 +1,15 @@
+$kind: http-request
+name: New Request
+url: "{{baseUrl}}/api/events?category=6a88797bff8c69791c7ba560&city=cairo&startDate=2026-01-01&endDate=2026-12-31&search=tech&page=1&limit=5&sortBy=date&order=desc"
+method: GET
+queryParams:
+  category: 6a88797bff8c69791c7ba560
+  city: cairo
+  startDate: 2026-01-01
+  endDate: 2026-12-31
+  search: tech
+  page: "1"
+  limit: "5"
+  sortBy: date
+  order: desc
+order: 4503522285241540

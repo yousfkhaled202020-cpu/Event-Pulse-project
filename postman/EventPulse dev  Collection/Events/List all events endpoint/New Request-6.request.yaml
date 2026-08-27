@@ -1,0 +1,9 @@
+$kind: http-request
+name: New Request
+url: "{{baseUrl}}/api/events/6a8b786af08e38effc69cb40"
+method: DELETE
+auth:
+  type: bearer
+  credentials:
+    token: knsdkjadjkassald
+order: 4498954998393279

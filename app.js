@@ -7,6 +7,7 @@ const {Server} = require("socket.io");
 const connectDB = require("./config/connectDB.js");
 const setupMiddleware = require("./config/middleware.js");
 const setupRoutes = require("./config/routes.js");  
+const errorHandler = require("./middleware/errorHandler.js");
 const socketHandler = require("./socket/socketHandler.js");
 
 
@@ -42,14 +43,19 @@ app.get("/health", (req, res) => {
 app.use((req,res,next) =>{
 res.status(404).json({status:'fail' , message: 'Page Not Found'});
 });
+
+app.use(errorHandler);
+
 //function: run the app
-const start = async() => {
-    await connectDB() ;
-server.listen(PORT,() =>{
-    console.log("chat Server is running");
-});
+if (process.env.NODE_ENV !== "production") {
+    connectDB().then(() => {
+        server.listen(PORT, () => {
+            console.log("Chat Server is running locally");
+        });
+    }).catch(err => console.log("Database connection error:", err));
+} else {
+    // On Vercel, connect to the DB immediately when the file loads
+    connectDB().catch(err => console.log("Production Database connection error:", err));
 }
-start();
 
-
-module.exports = app;
+module.exports = server;

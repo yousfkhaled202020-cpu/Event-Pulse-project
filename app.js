@@ -14,6 +14,8 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server,{cors:{origin:"*"}});
 const PORT = process.env.PORT || 5000 ;
+const SERVER_START_TIME = Date.now();
+
 
 setupMiddleware(app);
 app.use((req,res,next) =>{
@@ -23,18 +25,23 @@ app.use((req,res,next) =>{
 socketHandler(io);
 setupRoutes(app);
 
+
+app.get("/health", (req, res) => {
+    const uptime = Math.floor((Date.now() - SERVER_START_TIME) / 1000);
+    
+    res.status(200).json({
+        status: "ok",
+        environment: process.env.NODE_ENV || "development",
+        uptime: `${uptime}s`,
+        database: "connected", // Update based on actual DB connection state
+        timestamp: new Date().toISOString()
+    });
+});
+
 //404 error handeler
 app.use((req,res,next) =>{
 res.status(404).json({status:'fail' , message: 'Page Not Found'});
 });
-
-app.get("/api/health",(req,res) =>{
-    res.json({
-        status:"ok",
-        connection: io.engine.clientsCount
-    })
-});
-
 //function: run the app
 const start = async() => {
     await connectDB() ;

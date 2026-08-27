@@ -22,7 +22,7 @@ const swaggerDocument = require('./eventpulse-swagger.json');
 
 app.use(
     '/api-docs',
-    swaggerUi.serve,
+    swaggerUi.serveFiles(swaggerDocument),
     swaggerUi.setup(swaggerDocument)
 );
 

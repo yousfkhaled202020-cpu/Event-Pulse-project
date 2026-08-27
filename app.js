@@ -20,15 +20,11 @@ setupMiddleware(app);
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./eventpulse-swagger.json');
 
-const swaggerOptions = {
-    customCssUrl: 'https://cloudflare.com',
-    customJs: [
-        'https://cloudflare.com',
-        'https://cloudflare.com'
-    ]
-};
-
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, swaggerOptions));
+app.use(
+    '/api-docs',
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerDocument)
+);
 
 app.use((req,res,next) =>{
     req.io = io;
@@ -65,5 +61,5 @@ if (process.env.NODE_ENV !== "production") {
 } else {
     connectDB().catch(err => console.log("Production Database connection error:", err));
 }
-
-module.exports = server;
+  
+module.exports = app;

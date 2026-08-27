@@ -1,5 +1,5 @@
 const { body, param } = require("express-validator");
-
+//regiter or signup  rules
 const registerRules = [
     body("name")
         .trim()
@@ -106,7 +106,7 @@ const updateEventRules = [
         .trim()
         .isLength({ max: 500 }).withMessage("Address details cannot exceed 500 characters")
 ];
-
+//register event rules
 const registrationRules = [
     param("id")
         .isMongoId().withMessage("eventId must be a valid MongoId")

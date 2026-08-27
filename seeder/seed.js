@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const dotenv = require("dotenv").config();
 const connectDB = require("../config/connectDB");
@@ -9,6 +9,7 @@ const category = require("../models/category.model");
 const registration = require("../models/registration.model");
 const categories = require("./data/categoriesData");
 const admins = require("./data/adminUserData");
+const events = require("./data/eventsData");
 
 
 const dataSeeder = async () => {
@@ -21,13 +22,44 @@ const dataSeeder = async () => {
         await category.deleteMany();
         await user.deleteMany();
         
-        await category.insertMany(categories);
+        const insertedCategories = await category.insertMany(categories);
+        console.log("Categories seeded...");
+
         for (const a of admins){
             const password = a.password ;
             const hashedPass = await bcrypt.hash(password,10);
             a.password = hashedPass;
         };
-        await user.insertMany(admins); 
+        const insertedAdmins = await user.insertMany(admins); 
+        console.log("Admins seeded...");
+
+        const defaultOrganizerId = insertedAdmins[0]._id;
+
+        const eventsArray = Array.isArray(events) ? events : Object.values(events);
+        
+        const mappedEvents = eventsArray.map(ev => {
+            let matchedCategory;
+            
+            if (ev.title.toLowerCase().includes("world cup")) {
+                matchedCategory = insertedCategories.find(c => c.name === "Sports Events");
+            } else if (ev.title.toLowerCase().includes("health")) {
+                matchedCategory = insertedCategories.find(c => c.name === "Healthcare Events");
+            }
+
+            if (matchedCategory) {
+                ev.category = matchedCategory._id;
+            } else {
+                console.warn(`Could not find a matching category for event: ${ev.title}`);
+            }
+
+            ev.organizer = defaultOrganizerId;
+            
+            return ev;
+        });
+
+        await event.insertMany(mappedEvents);
+        console.log("Events linked and seeded...");
+        
         console.log("Seeding is completed successfully!")
     }
     catch(err){

@@ -23,7 +23,8 @@ setupMiddleware(app);
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./eventpulse-swagger.json');
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+const CSS_URL = "https://cloudflare.com";
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, { customCssUrl: CSS_URL }));
 app.use((req,res,next) =>{
     req.io = io;
     next();
